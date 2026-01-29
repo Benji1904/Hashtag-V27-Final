@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from './services/firebase';
+// CORRECTION : On pointe vers ./firebase (à la racine) au lieu de ./services/firebase
+import { db } from './firebase'; 
 import Navbar from './components/Navbar';
 import PublicHome from './components/PublicHome';
 import Footer from './components/Footer';
@@ -155,10 +156,11 @@ const App: React.FC = () => {
         )}
       </main>
       
-      {/* Masquage du Footer global sur la HOME (car elle a son propre footer interactif), l'ADMIN et le GATE */}
+      {/* Masquage du Footer global sur la HOME, l'ADMIN et le GATE */}
       {view !== 'ADMIN_DASHBOARD' && view !== 'HOME' && view !== 'GATE' && view !== 'SCAN_ACCESS' && <Footer />}
     </div>
   );
 };
 
 export default App;
+        
